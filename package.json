@@ -20,7 +20,6 @@
     "test": "subschema-karma --single-run --browsers Firefox",
     "server": "subschema-webpack-dev-server",
     "demo": "subschema-webpack --demo ./docs",
-    "gh-pages": "git subtree push --prefix docs origin gh-pages",
     "dist": "subschema-babel",
     "preversion": "npm run dist && npm run test"
   }

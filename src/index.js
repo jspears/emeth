@@ -22,6 +22,7 @@ export default function (diffTheme) {
             themes.splice(idx, 1);
             themeMap = {};
         }
+        return diffTheme;
     }
 }
 
