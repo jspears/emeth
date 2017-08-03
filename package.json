@@ -1,6 +1,6 @@
 {
   "name": "emeth",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "CSS module theming tool",
   "main": "lib/index",
   "repository": "git@github.com:jspears/emeth.git",
