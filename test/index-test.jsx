@@ -35,5 +35,9 @@ describe('theme', function () {
         d.forEach(execLoop);
         settings.warn = owarn;
     });
-
+    it('should return theme when removing', function () {
+        const test = { A: { test: 1 } };
+        const a    = theme(test);
+        expect(a()).toEqual(test);
+    });
 });
