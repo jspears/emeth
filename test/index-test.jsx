@@ -1,25 +1,25 @@
 import theme, { themeClass, settings } from 'emeth';
 import expect from 'expect';
 
-const execLoop = c => c();
+const execLoop = (...fns) => () => fns.forEach(c => c());
 describe('theme', function () {
     it('should return in the right order', function () {
-        const d  = [
+        const remove = execLoop(
             theme({ A: { test: 1 } }),
             theme({ B: { test: 3 } }),
             theme({ A: { test: 2 } })
-        ];
-        const tc = themeClass({ displayName: 'A' });
+        );
+        const tc     = themeClass({ displayName: 'A' });
 
         expect(tc('test')).toEqual('2 1')
-        d.forEach(execLoop);
+        remove();
     });
     it('should return unknown class', function () {
-        const d       = [
+        const remove  = execLoop(
             theme({ A: { test: 1 } }),
             theme({ B: { test: 3 } }),
             theme({ A: { test: 2 } })
-        ];
+        );
         const owarn   = settings.warn;
         const capture = [];
         settings.warn = (...args) => capture.push(args);
@@ -32,7 +32,7 @@ describe('theme', function () {
         expect(capture[0][1]).toEqual('A');
         expect(capture[0][2]).toEqual(['stuff']);
 
-        d.forEach(execLoop);
+        remove();
         settings.warn = owarn;
     });
     it('should return theme when removing', function () {
